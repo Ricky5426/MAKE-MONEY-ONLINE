@@ -121,7 +121,7 @@
       color: #555;
       margin-bottom: 10px;
     }
-
+    
     .blog-section ul {
       margin-left: 20px;
       margin-bottom: 10px;
@@ -335,7 +335,7 @@
       letter-spacing: 0.3px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.2);
     }
-
+    
     .welcome-card {
       background: #ffd24d !important;
       color: #1f2432 !important;
@@ -525,8 +525,8 @@
       width: 110px;
       height: 110px;
       margin: 0 auto 12px;
-    }
-
+      }
+    
     .profile-avatar-frame {
       width: 100%;
       height: 100%;
@@ -588,13 +588,46 @@
       line-height: 1.6;
     }
 
+    /* Professional Referral UI Classes */
+    .link-share-container {
+      display: flex;
+      background: #222634;
+      border: 1px solid #46598a;
+      border-radius: 12px;
+      overflow: hidden;
+      margin-top: 12px;
+    }
+    .link-display-field {
+      flex: 1;
+      padding: 14px;
+      font-size: 13px;
+      color: #ffd24d;
+      font-family: monospace;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .copy-action-btn {
+      background: #2f66e0;
+      color: white;
+      border: none;
+      padding: 0 18px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .copy-action-btn:hover {
+      background: #1b52cb;
+    }
+
     @media(max-width:600px){
       .action-row { flex-direction: column; }
       iframe { height: 200px; }
       .profile-dashboard-grid { grid-template-columns: 1fr; }
       .profile-info-widget-full { grid-column: span 1; }
     }
-  </style>
+      </style>
 </head>
 <body>
 
@@ -620,8 +653,8 @@
       <h2>How To Earn Rewards Online</h2>
       <p>Welcome to the ultimate video rewards platform where your time translates directly into income. We offer a simple, transparent path for users looking to maximize their daily earnings from home.</p>
       
-      <h3>🚀 Invite & Earn Program</h3>
-      <p><strong>EARN 15 KSH FOR EVERY VERIFIED USER YOU INVITE!</strong> Share your unique invite link from your dashboard. Once your referred friend completes registration and their account is verified by the administrator, KSh 15 is automatically added to your referral balance.</p>
+      <h3>🚀 Premium Affiliate Program</h3>
+      <p>Accelerate your growth using our <b>Tier-1 Partnership Program</b>. For every unique active partner you introduce to the network, your profile receives an instant <b>KSh 15.00 contract credit</b> immediately upon successful account audit and administrative profile verification.</p>
       
       <h3>🎬 Watch & Earn Simple Steps</h3>
       <ul>
@@ -642,11 +675,6 @@
 
       <button class="btn btn-blue" id="loginSubmitBtn" onclick="login()">Login</button>
       <button class="btn btn-gold" id="loginRegisterBtn" onclick="openRegisterModal()">Create Account</button>
-      
-      <div class="small-note" style="text-align:center; color:#ffd24d; margin-top: 15px; font-size:12px;">
-        💡 **Admin Access Notice:**<br>
-        Admin Username: <span style="color:#fff">admin</span> | Password: <span style="color:#fff">admin123</span>
-      </div>
     </div>
   </div>
 
@@ -741,7 +769,7 @@
           </table>
         </div>
       </div>
-
+  
       <div id="adminWithdrawals" class="admin-page card" style="display:none;">
         <div class="section-title">Pending & Past Withdrawals</div>
         <div class="table-responsive">
@@ -766,7 +794,7 @@
   <!-- ACTIVE MEMBERS ARCHITECTURAL DASHBOARD CONTAINER -->
   <div id="dashboard">
     <div class="container">
-      
+            
       <!-- CORE VIDEO FEED MODULE -->
       <div id="homePage" class="page active">
         <!-- RECONFIGURED WEEKLY INCENTIVE PROMO BANNER -->
@@ -872,33 +900,37 @@
         </div>
       </div>
 
-      <!-- AFFILIATE PROGRAM DISTRIBUTION MODULE -->
+      <!-- AFFILIATE PROGRAM DISTRIBUTION MODULE (PROFESSIONAL OVERHAUL) -->
       <div id="referralPage" class="page">
         <div class="card">
-          <div class="section-title">Referral Program</div>
-          <div class="sub-text">Invite friends and earn KSh 15 once their account is verified by the administrator. This program operates on a direct, 1-level structure.</div>
-          <div class="list-box">
-            <div><b>Your Unique Invite Link:</b></div>
-            <div id="refLink" style="margin-top:10px; word-break:break-all; color: #ffd24d; font-weight: 700;">Loading...</div>
+          <div class="section-title">Partnership & Affiliates</div>
+          <div class="sub-text">Scale your income stream by building your organization network. You earn an instantaneous payment contract of <b>KSh 15.00</b> for every user who completes account configuration and passes administrative security audit reviews.</div>
+          
+          <div style="margin-top: 15px;">
+            <span style="font-size: 12px; font-weight: 700; text-transform: uppercase; color: #ffd24d; letter-spacing: 0.5px;">Your Corporate Asset Link</span>
+            <div class="link-share-container">
+              <div id="refLink" class="link-display-field">Generating corporate deployment url...</div>
+              <button class="copy-action-btn" onclick="copyReferralLink()">Copy Link</button>
+            </div>
           </div>
         </div>
 
         <!-- DIRECTLY REFERRED USER NETWORK TRACKER -->
         <div class="card" style="margin-top: 20px;">
-          <div class="section-title" style="font-size: 20px;">👥 Your Referral Network</div>
-          <div class="sub-text" style="font-size: 13px;">Track users who joined through your link and see their activation status.</div>
+          <div class="section-title" style="font-size: 20px;">👥 Performance Matrix Ledger</div>
+          <div class="sub-text" style="font-size: 13px;">Review your direct invite networks, audit points, and deployment activation milestones.</div>
           <div class="table-responsive">
             <table>
               <thead>
                 <tr>
-                  <th>Username</th>
-                  <th>Joined Date</th>
-                  <th>Profile Status</th>
+                  <th>Partner Identity</th>
+                  <th>Onboarding Date</th>
+                  <th>Verification Status</th>
                 </tr>
               </thead>
               <tbody id="userReferralNetworkTable">
                 <tr>
-                  <td colspan="3" style="text-align:center; color:#aaa; padding: 15px;">No invites tracked yet.</td>
+                  <td colspan="3" style="text-align:center; color:#aaa; padding: 15px;">No network data recorded.</td>
                 </tr>
               </tbody>
             </table>
@@ -976,13 +1008,25 @@
     let rewardTimer = null;
     let countdownInterval = null;
 
+    // One-Click Link Copy Action Function
+    function copyReferralLink() {
+      const linkText = document.getElementById("refLink").innerText;
+      navigator.clipboard.writeText(linkText).then(() => {
+        alert("Success! Affiliate deployment link copied to clipboard.");
+      }).catch(err => {
+        console.error("Could not copy asset link text: ", err);
+      });
+    }
+
     // Asynchronously fetch live server data from Google Sheet
     async function loadDataFromGoogle() {
       const title = document.getElementById("loginLoadingTitle");
       const sub = document.getElementById("loginLoadingSub");
       
-      title.innerText = "🔄 Connecting...";
-      sub.innerText = "Establishing secure stream with database engines...";
+      if (title && sub) {
+        title.innerText = "🔄 Connecting...";
+        sub.innerText = "Establishing secure stream with database engines...";
+      }
 
       try {
         const response = await fetch(GOOGLE_SCRIPT_URL, {
@@ -995,11 +1039,13 @@
           withdrawals = result.withdrawals || [];
           console.log("Database initialized from cloud backend.");
         }
-      } catch (e) {
+            } catch (e) {
         console.error("Cloud engine connection error:", e);
       } finally {
-        title.innerText = "Login";
-        sub.innerText = "Enter your M-Pesa mobile number to sign in.";
+        if (title && sub) {
+          title.innerText = "Login";
+          sub.innerText = "Enter your M-Pesa mobile number to sign in.";
+        }
       }
     }
 
@@ -1149,7 +1195,7 @@
         referredBy: referrer,
         joined: new Date().toLocaleDateString()
       };
-    users.push(newUser);
+      users.push(newUser);
       
       // Update UI state to loading while network hits Google
       const regBtn = document.querySelector("#registerModal .btn-gold");
@@ -1222,7 +1268,7 @@
       }
     }
 
-    function submitMpesaCode() {
+        function submitMpesaCode() {
       const user = getCurrentUser();
       const code = document.getElementById("mpesaCodeInput").value.trim().toUpperCase();
       const fileInput = document.getElementById("mpesaReceiptFile");
@@ -1278,7 +1324,7 @@
         msgDiv.innerHTML = `Status: <span style="color:#ff4d4d;">Waiting for code entry or image upload...</span>`;
       }
     }
-
+    
     function logout(){
       localStorage.removeItem("currentUserPhone");
       clearTimeout(rewardTimer);
@@ -1374,7 +1420,7 @@
       networkTableBody.innerHTML = "";
 
       if(downlines.length === 0) {
-        networkTableBody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:#aaa; padding: 15px;">No invites tracked yet.</td></tr>`;
+        networkTableBody.innerHTML = `<tr><td colspan="3" style="text-align:center; color:#aaa; padding: 15px;">No network data recorded.</td></tr>`;
         return;
       }
 
@@ -1646,3 +1692,4 @@
   </script>
 </body>
 </html>
+    
