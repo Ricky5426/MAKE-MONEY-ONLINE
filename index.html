@@ -739,7 +739,7 @@
       <button onclick="showAdminPage('adminUsers', this)" style="background:transparent; color:#fff; border:none; cursor:pointer; font-weight:700;" class="active">Manage Users</button>
       <button onclick="showAdminPage('adminWithdrawals', this)" style="background:transparent; color:#fff; border:none; cursor:pointer; font-weight:700;">Withdrawal Requests</button>
     </nav>
-                            <div class="container">
+        <div class="container">
       <div id="adminUsers" class="admin-page card" style="display:block;">
         <div class="section-title">Registered Users & Activation Requests</div>
         <div class="table-responsive">
@@ -967,10 +967,9 @@
       </button>
     </nav>
   </div>
-
   <script>
     // ⚠️ LIVE INSTALLED GOOGLE WEB APP DEPLOYMENT BACKEND URL
-    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxMLGt4M4WdNfPUfe_SXdcgx81-DaPHzIsxYIY5vi2KlqynmkbU9HhZuCqyhC6idCAq/exec";
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxF0FMTcNXovLMOXNgOKkvdJPZxD1N3tRsfE5mtfER89SR4PrZIjQyKkxUCLcwcyg5x/exec";
 
     let users = [];
     let withdrawals = [];
@@ -986,7 +985,6 @@
     let rewardTimer = null;
     let countdownInterval = null;
 
-    // LocalStorage Sync Engine to act as fallback and prevent sudden drop on memory clear
     function loadLocalCache() {
       const cachedUsers = localStorage.getItem("cached_users");
       const cachedWithdrawals = localStorage.getItem("cached_withdrawals");
@@ -1008,7 +1006,6 @@
       });
     }
 
-    // Fetch live data safely without wiping existing local state if request fails
     async function loadDataFromGoogle() {
       const title = document.getElementById("loginLoadingTitle");
       const sub = document.getElementById("loginLoadingSub");
@@ -1025,7 +1022,6 @@
         });
         const result = await response.json();
         if (result.status === "success") {
-          // Deep merge to prioritize fresh database rows
           users = result.users || users;
           withdrawals = result.withdrawals || withdrawals;
           saveLocalCache();
@@ -1041,7 +1037,6 @@
       }
     }
 
-    // Synchronize arrays up to Google Sheets
     async function saveToGoogleDatabase() {
       saveLocalCache();
       try {
@@ -1060,7 +1055,6 @@
     }
 
     window.addEventListener("DOMContentLoaded", async () => {
-      // Load cache immediately so interface populates instantly
       loadLocalCache();
 
       const urlParams = new URLSearchParams(window.location.search);
@@ -1079,10 +1073,7 @@
         });
       }
 
-      // Restore active user views based on caching
       restoreSessionView();
-
-      // Trigger asynchronous background cloud updates without blocking layout execution
       await loadDataFromGoogle();
       restoreSessionView();
     });
@@ -1114,7 +1105,8 @@
         }
       }
     }
-       function startLiveTickerEngine() {
+
+    function startLiveTickerEngine() {
       const ticker = document.getElementById("livePayoutTicker");
       const phonePrefixes = ["0712", "0722", "0701", "0754", "0790", "0741", "0733"];
       const phrases = [
@@ -1193,7 +1185,7 @@
       };
       
       users.push(newUser);
-      saveLocalCache(); // Save locally immediately
+      saveLocalCache();
       
       regBtn.innerText = "Saving to Server...";
       regBtn.disabled = true;
@@ -1373,7 +1365,6 @@
       document.getElementById("profileRefBalance").innerText = "KSh " + Number(user.referralBalance || 0).toFixed(2);
       document.getElementById("profileVideos").innerText = user.videosWatched || 0;
 
-      // Production URL for your GitHub Pages deployment configuration
       const githubAddress = "https://ricky5426.github.io/MAKE-MONEY-ONLINE/"; 
       document.getElementById("refLink").innerText = githubAddress + "?ref=" + encodeURIComponent(user.phone);
     }
@@ -1423,8 +1414,7 @@
       document.getElementById("videoNumber").innerText = video.title + " (" + (currentVideo + 1) + " of " + videos.length + ")";
       startRewardTimer();
     }
-
-    function startRewardTimer(){
+       function startRewardTimer(){
       clearTimeout(rewardTimer);
       clearInterval(countdownInterval);
 
@@ -1533,8 +1523,9 @@
           return;
         }
         user.referralBalance = Number(user.referralBalance) - amount;
-    }
-          const newWithdrawal = {
+      }
+
+      const newWithdrawal = {
         id: "WD" + Math.floor(Math.random() * 90000 + 10000),
         username: user.phone,
         walletType: source === "video" ? "Video Watch" : "Referral",
